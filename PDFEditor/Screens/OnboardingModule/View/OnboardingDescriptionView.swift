@@ -7,25 +7,24 @@ struct OnboardingDescriptionView: View {
     let lowerHeader: String
     let firstLine: String
     let secondLine: String
-    var swapColors: Bool = false
     
     var body: some View {
         VStack {
             Text(changeWordColor(upperHeader))
-                .font(AppFonts.vietnam34Bold)
+                .font(AppFonts.albert34Bold)
                 
             Text(changeWordColor(lowerHeader))
-                .font(AppFonts.vietnam34Bold)
-                .padding(.bottom, 7)
+                .font(AppFonts.albert34Bold)
+                .padding(.bottom, 3)
             
-            VStack(spacing: 4) {
+            VStack(spacing: 0) {
                 Text(firstLine)
                     .foregroundColor(AppColor.descriptionColor)
-                    .font(AppFonts.vietnam14SemiBold)
+                    .font(AppFonts.albert18SemiBold)
                 
                 Text(secondLine)
                     .foregroundColor(AppColor.descriptionColor)
-                    .font(AppFonts.vietnam14SemiBold)
+                    .font(AppFonts.albert18SemiBold)
             }
         }
         .padding()
@@ -34,10 +33,10 @@ struct OnboardingDescriptionView: View {
     func changeWordColor(_ string: String) -> AttributedString {
         var attrString: AttributedString {
             var attrString = AttributedString(string)
-            attrString.foregroundColor = .white
+            attrString.foregroundColor = .black
             
             if let range = attrString.range(of: highlightWord) {
-                attrString[range].foregroundColor = AppColor.peachColor
+                attrString[range].foregroundColor = AppColor.lightBlue
             }
             
             return attrString

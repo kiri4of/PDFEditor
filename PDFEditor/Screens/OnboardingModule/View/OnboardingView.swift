@@ -6,11 +6,7 @@ struct OnboardingView: View {
     
     var body: some View {
         ZStack {
-            AppColor.backgroundGradient.ignoresSafeArea()
            
-            GlowingCircle(offsetX: -132, offsetY: -350)
-                .zIndex(1)
-            
             TabView(selection: $viewModel.currentPage) {
                 ForEach(0..<viewModel.pages.count, id: \.self) { index in
                     VStack {
@@ -18,27 +14,32 @@ struct OnboardingView: View {
                             upperHeader: viewModel.pages[index].upperHeader, highlightWord: viewModel.pages[index].highlightWord,
                             lowerHeader: viewModel.pages[index].lowerHeader,
                             firstLine: viewModel.pages[index].firstLine,
-                            secondLine: viewModel.pages[index].secondLine,
-                            swapColors: !index.isMultiple(of: 2))
-                        .padding(.top, 20)
-
-                        Image(viewModel.pages[index].imageName)
-                            .resizable()
-                            .aspectRatio(contentMode: .fit)
-                            .padding(.bottom, -8)
+                            secondLine: viewModel.pages[index].secondLine
+                            )
+                        .padding(.top, 10)
                         
+                        if viewModel.currentPage == viewModel.pages.count - 1 {
+                            TasksView()
+                        } else {
+                            Image(viewModel.pages[index].imageName)
+                                .resizable()
+                                .aspectRatio(contentMode: .fit)
+             
+                        }
+                       
                         Button(action: {
                             UIImpactFeedbackGenerator(style: .light).impactOccurred()
                             viewModel.nextButtonTapped()
                         }) {
                             Text("Continue")
-                                .font(AppFonts.vietnam18SemiBold)
+                                .font(AppFonts.albert18SemiBold)
                                 .foregroundColor(.white)
-                                .frame(width: 344, height: 68)
-                                .background(AppColor.peachGradient)
-                                .cornerRadius(16)
-                                .shadow(color: AppColor.peachShadowColor, radius: 21.3, x: 0, y: 5)
+                                .frame(width: 350, height: 68)
+                                .background(AppColor.mainGradient)
+                                .cornerRadius(25)
+                                .shadow(color: AppColor.shadowColor, radius: 18.1, x: 0, y: 4)
                         }
+                        .padding(.top, -8)
 
                         
                         HStack(spacing: 55) {
@@ -57,13 +58,13 @@ struct OnboardingView: View {
                                 viewModel.openTermsOfUse()
                             }
                         }
-                        .font(AppFonts.vietnam16SemiBold)
+                        .font(AppFonts.albert16SemiBold)
                         .foregroundColor(.gray)
                         .padding(.top, 15)
                     }
                 }
             }
-            .background(AppColor.backgroundGradient)
+            .background(.white)
             .tabViewStyle(PageTabViewStyle(indexDisplayMode: .never))
         }
     }

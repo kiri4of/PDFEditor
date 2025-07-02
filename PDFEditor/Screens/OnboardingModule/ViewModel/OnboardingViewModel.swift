@@ -1,42 +1,44 @@
 import Foundation
 import SwiftUI
 import StoreKit
+import Combine
 
 class OnboardingViewModel: ObservableObject {
+    
     //array of data
     let pages: [OnboardingPage] = [
         OnboardingPage(
-            upperHeader: NSLocalizedString("Welcome to", comment: ""),
-            highlightWord: NSLocalizedString("Welcome", comment: ""),
-            lowerHeader: NSLocalizedString("Screen Mirror", comment: "Onboarding black title part"),
-            firstLine: NSLocalizedString("Stream your phone's display to your ", comment: ""),
-            secondLine: NSLocalizedString("TV in a flash with just a tap", comment: ""),
+            upperHeader: NSLocalizedString("All-in-one: Scan.", comment: ""),
+            highlightWord: NSLocalizedString("All-in-one", comment: ""),
+            lowerHeader: NSLocalizedString("Edit. Share", comment: ""),
+            firstLine: NSLocalizedString("Transform your document with", comment: ""),
+            secondLine: NSLocalizedString("powerful editing tools", comment: ""),
             imageName: "onb1"
         ),
         OnboardingPage(
-            upperHeader: NSLocalizedString("Quick conect", comment: ""),
-            highlightWord: NSLocalizedString("Quick", comment: ""),
-            lowerHeader: NSLocalizedString("and cast", comment: ""),
-            firstLine: NSLocalizedString("Your phone and TV must be on the ", comment: ""),
-            secondLine: NSLocalizedString("same WI-FI network", comment: ""),
+            upperHeader: NSLocalizedString("Convert and", comment: ""),
+            highlightWord: NSLocalizedString("Convert", comment: ""),
+            lowerHeader: NSLocalizedString("Compress PDF", comment: ""),
+            firstLine: NSLocalizedString("PDF conversion made easy-one", comment: ""),
+            secondLine: NSLocalizedString("click is all it takes", comment: ""),
             imageName: "onb2"
         ),
         OnboardingPage(
-            upperHeader: NSLocalizedString("We'd love to", comment: ""),
-            highlightWord: NSLocalizedString("review", comment: ""),
-            lowerHeader: NSLocalizedString("hear your review", comment: ""),
-            firstLine: NSLocalizedString("Tell us what you think - we're here", comment: ""),
-            secondLine: NSLocalizedString("to make it better", comment: ""),
+            upperHeader: NSLocalizedString("Trusted by users", comment: ""),
+            highlightWord: NSLocalizedString("Trusted", comment: ""),
+            lowerHeader: NSLocalizedString("worldwide", comment: ""),
+            firstLine: NSLocalizedString("Focused on giving you best", comment: ""),
+            secondLine: NSLocalizedString("experience", comment: ""),
             imageName: "onb3"
         ),
         OnboardingPage(
-            upperHeader: NSLocalizedString("Mirror photos", comment: ""),
-            highlightWord: NSLocalizedString("Mirror", comment: ""),
-            lowerHeader: NSLocalizedString("and apps", comment: ""),
-            firstLine: NSLocalizedString("Just one click to see any photos or ", comment: ""),
-            secondLine: NSLocalizedString("film from your phone on your TV.", comment: ""),
-            imageName: "onb4"
-        )
+            upperHeader: NSLocalizedString("Whick option fits", comment: ""),
+            highlightWord: NSLocalizedString("fits", comment: ""),
+            lowerHeader: NSLocalizedString("you best?", comment: ""),
+            firstLine: NSLocalizedString("Multiple choices may be selected", comment: ""),
+            secondLine: NSLocalizedString("from the list below", comment: ""),
+            imageName: ""
+        ),
     ]
     
     @Published var currentPage: Int = 0
@@ -71,3 +73,4 @@ class OnboardingViewModel: ObservableObject {
        // UIApplication.shared.open(url)
     }
 }
+
